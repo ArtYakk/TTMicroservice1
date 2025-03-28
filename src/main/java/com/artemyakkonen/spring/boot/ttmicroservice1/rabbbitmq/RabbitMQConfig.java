@@ -1,4 +1,4 @@
-package com.artemyakkonen.spring.boot.ttmicroservice1.config;
+package com.artemyakkonen.spring.boot.ttmicroservice1.rabbbitmq;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

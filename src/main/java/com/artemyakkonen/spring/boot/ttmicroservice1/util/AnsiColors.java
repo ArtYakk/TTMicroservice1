@@ -1,6 +1,5 @@
-package com.artemyakkonen.spring.boot.moviemate.util;
+package com.artemyakkonen.spring.boot.ttmicroservice1.util;
 
-import jakarta.persistence.Column;
 import org.springframework.boot.ansi.AnsiBackground;
 import org.springframework.boot.ansi.AnsiColor;
 
