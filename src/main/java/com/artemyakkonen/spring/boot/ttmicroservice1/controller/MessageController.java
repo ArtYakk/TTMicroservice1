@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
 
     MessageProducer messageProducer;
-    IdentifierService identifierService;
 
     @Autowired
     public MessageController(MessageProducer messageProducer, IdentifierService identifierService){
         this.messageProducer = messageProducer;
-        this.identifierService = identifierService;
     }
 
     @PostMapping("/message")
