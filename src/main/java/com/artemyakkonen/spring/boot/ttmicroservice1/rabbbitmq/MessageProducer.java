@@ -1,18 +1,13 @@
 package com.artemyakkonen.spring.boot.ttmicroservice1.rabbbitmq;
 
 
+import com.artemyakkonen.spring.boot.ttmicroservice1.dto.RabbitMessageDTO;
 import com.artemyakkonen.spring.boot.ttmicroservice1.service.IdentifierService;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.util.Arrays;
-import java.util.Date;
 
 @Component
     public class MessageProducer {
@@ -27,9 +22,14 @@ import java.util.Date;
         }
 
         public void sendMessage(String message) {
-            String fullMessage = message + " ID:" + identifierService.getServiceId();
-            rabbitTemplate.convertAndSend("myExchange", "routingKey", fullMessage);
-            System.out.println("Sent: " + message);
+            RabbitMessageDTO rabbitMessageDTO = RabbitMessageDTO.builder()
+                    .uuid(identifierService.getServiceId())
+                    .timestamp(LocalDateTime.now())
+                    .body(message)
+                    .build();
+
+            rabbitTemplate.convertAndSend("myExchange", "routingKey", rabbitMessageDTO);
+            System.out.println("Sent: " + rabbitMessageDTO.getBody());
         }
     }
 
