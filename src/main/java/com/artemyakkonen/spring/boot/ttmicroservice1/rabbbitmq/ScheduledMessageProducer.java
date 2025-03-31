@@ -23,7 +23,7 @@ public class ScheduledMessageProducer {
         this.identifierService = identifierService;
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10000)
     public void sendScheduledMessage() {
         RabbitMessageDTO rabbitMessageDTO = RabbitMessageDTO.builder()
                 .uuid(identifierService.getServiceId())
